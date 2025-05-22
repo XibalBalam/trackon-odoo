@@ -23,8 +23,9 @@ services:
       - PASSWORD=odoo
     volumes:
       - odoo_data:/var/lib/odoo
-      - ./addons:/mnt/extra-addons  # 👈 esta es la clave
-
+      - ./addons:/mnt/extra-addons
+      - ./config/odoo.conf:/etc/odoo/odoo.conf     # 👈 Monta tu archivo real
+    command: ["odoo", "--config=/etc/odoo/odoo.conf"]  # 👈 Usa el config correcto
 
 volumes:
   db_data:
